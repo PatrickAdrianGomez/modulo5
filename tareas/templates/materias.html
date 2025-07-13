@@ -1,0 +1,80 @@
+<h1>Todas las Materias</h1>
+
+<style>
+    .responsive-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+        font-size: 0.9em;
+        font-family: sans-serif;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .responsive-table thead tr {
+        background-color: #f8f9fa;
+        color: #495057;
+        text-align: left;
+        font-weight: bold;
+    }
+    
+    .responsive-table th,
+    .responsive-table td {
+        padding: 12px 15px;
+        border: 1px solid #dee2e6;
+    }
+    
+    .responsive-table tbody tr {
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .responsive-table tbody tr:nth-of-type(even) {
+        background-color: #f8f9fa;
+    }
+    
+    .responsive-table tbody tr:last-of-type {
+        border-bottom: 2px solid #dee2e6;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .responsive-table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+    }
+</style>
+
+<table class="responsive-table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Créditos</th>
+            <th>Profesor</th>
+            <th>Estudiante</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for materia in materias %}
+        <tr>
+            <td>{{ materia.nombre }}</td>
+            <td>{{ materia.descripcion }}</td>
+            <td>{{ materia.creditos }}</td>
+            <td>{{ materia.profesor }}</td>
+            <td>
+                {% for estudiante in materia.estudiantes.all %}
+                    {{ estudiante.nombre }} {{ estudiante.apellido }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    <em>Sin estudiantes</em>
+                {% endfor %}
+            </td>
+            <td>{{ materia.get_estado_display }}</td>
+            <td> 
+                <a href="" class="btn-edit">Editar</a>
+                <a href="" class="btn-delete">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
