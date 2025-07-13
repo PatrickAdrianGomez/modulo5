@@ -67,10 +67,12 @@
             <td>{{ persona.fecha_nacimiento|date:"d/m/Y" }}</td>
             <td>{{ persona.get_estado_display }}</td>
             <td> 
-                <a href="" class="btn-edit">Editar</a>
-                <a href="" class="btn-delete">Eliminar</a>
+                <a href="{% url 'editar_persona' persona.id %}" class="btn-edit">Editar</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<!-- Link envía 0 para crear uno nuevo -->
+<a href="{% url 'editar_persona' 0 %}" class="btn-edit">Nuevo</a>

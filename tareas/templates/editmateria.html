@@ -1,0 +1,143 @@
+<style>
+    /* Estilos generales */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f5f5f5;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Alertas de error */
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+    }
+    
+    .alert-danger {
+        color: #a94442;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+    }
+    
+    /* Estilos para el formulario */
+    form {
+        background: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    table tr:not(:last-child) {
+        border-bottom: 1px solid #eee;
+    }
+    
+    table th, table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+    
+    table th {
+        width: 30%;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    
+    /* Estilos para los campos del formulario */
+    input, select, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+        border-color: #3498db;
+        outline: none;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    }
+    
+    /* Estilos para el botón */
+    button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    button:hover {
+        background-color: #2980b9;
+    }
+    
+    /* Estilos para errores de validación */
+    .errorlist {
+        color: #e74c3c;
+        margin: 5px 0 0 0;
+        padding-left: 0;
+        list-style: none;
+        font-size: 14px;
+    }
+    
+    /* Estilos responsivos */
+    @media (max-width: 768px) {
+        table th, table td {
+            display: block;
+            width: 100%;
+        }
+        
+        table th {
+            padding-bottom: 5px;
+        }
+        
+        table td {
+            padding-top: 5px;
+            padding-bottom: 15px;
+        }
+        
+        body {
+            padding: 10px;
+        }
+        
+        form {
+            padding: 15px;
+        }
+    }
+</style>
+
+<h1>Edición de Materias</h1>
+{% if form.errors %}
+    <div class="alert alert-danger">
+        <strong>Error:</strong> Por favor corrige los errores en el formulario.
+    </div>
+{% endif %}
+
+<form method="post" action="">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    <button type="submit">Guardar</button>
+</form>

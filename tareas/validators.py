@@ -1,6 +1,5 @@
 from django.core.exceptions import ValidationError
 from django.utils import timezone
-from .models import Persona
 import re
 
 def validar_fecha_vencimiento(value):
@@ -23,10 +22,10 @@ def validar_tipo_persona(value, tipo_esperado):
     if value.tipo != tipo_esperado:
         raise ValidationError(f"El campo debe ser un {tipo_esperado}.")
 
-def validar_estudiante_registrado(value):
-    if not Persona.objects.filter(ci=value.ci, tipo='estudiante').exists():
-        raise ValidationError("El estudiante no está registrado.")
-    
-def validar_profesor_registrado(value):
-    if not Persona.objects.filter(ci=value.ci, tipo='profesor').exists():
-        raise ValidationError("El profesor no está registrado.")
+# def validar_estudiante_registrado(value):
+#     if not Persona.objects.filter(ci=value.ci, tipo='estudiante').exists():
+#         raise ValidationError("El estudiante no está registrado.")
+#     
+# def validar_profesor_registrado(value):
+#     if not Persona.objects.filter(ci=value.ci, tipo='profesor').exists():
+#         raise ValidationError("El profesor no está registrado.")

@@ -69,10 +69,11 @@
             <td>{{ tarea.estudiante }}</td>
             <td>{{ tarea.get_estado_display }}</td>
             <td> 
-                <a href="" class="btn-edit">Editar</a>
-                <a href="" class="btn-delete">Eliminar</a>
+                <a href="{% url 'editar_tarea' tarea.id %}" class="btn-edit">Editar</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<!-- Link envía 0 para crear uno nuevo -->
+<a href="{% url 'editar_tarea' 0 %}" class="btn-edit">Nuevo</a>

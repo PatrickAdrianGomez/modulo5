@@ -17,6 +17,9 @@ urlpatterns = [
     path('personas/<int:id>/', views.lista_personas, name='detalle_persona'),  # Detail view for a specific persona
     path('materias/cantidad/', views.materia_count, name='materia-count'),
     path('personas/estudiantes/', views.alumnos_count, name='alumnos-count'),
+    path('personas_editar/<int:id>/', views.personaFormView, name='editar_persona'),  # Edit view for a specific persona
+    path('materias_editar/<int:id>/', views.materiaFormView, name='editar_materia'),  # Edit view for a specific materia
+    path('tareas_editar/<int:id>/', views.tareaFormView, name='editar_tarea'),  # Edit view for a specific tarea
 
     path('crud/', include(router.urls)),
 ]
